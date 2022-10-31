@@ -43,7 +43,7 @@ public class RecipeController { ;
     }
 
     @PostMapping
-    public ResponseEntity<RecipeDto> create(@Valid @RequestBody RecipeForm recipeForm, @RequestBody Integer instructionId){
+    public ResponseEntity<RecipeDto> create(@Valid @RequestBody RecipeForm recipeForm){
         return ResponseEntity.status(HttpStatus.CREATED).body(recipeService.createRecipe(recipeForm));
     }
 }

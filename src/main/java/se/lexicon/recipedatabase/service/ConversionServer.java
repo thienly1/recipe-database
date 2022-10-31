@@ -35,8 +35,9 @@ public class ConversionServer {
     public Recipe ToRecipeEntity(RecipeForm recipeForm){
         List<RecipeIngredient> ingredients= new ArrayList<>();
         Set<RecipeCategory> categories= new HashSet<>();
+        RecipeInstruction recipeInstruction= ToRecipeInstruction(recipeForm.getInstruction());
         Recipe recipe= new Recipe(0, recipeForm.getRecipeName(),ingredients,
-                null, categories);
+                recipeInstruction, categories);
         return recipe;
     }
     public RecipeDto ToRecipeDto(Recipe recipeEntity){
