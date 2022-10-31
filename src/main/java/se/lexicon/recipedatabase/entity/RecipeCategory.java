@@ -64,7 +64,7 @@ public class RecipeCategory {
     public String toString() {
         return "RecipeCategory{" +
                 "recipeCategoryId=" + recipeCategoryId +
-                ", category='" + category + '\'' +
+//                ", category='" + category + '\'' +
 //                ", recipe=" + recipe +
                 '}';
     }

@@ -32,7 +32,7 @@ class RecipeRepositoryTest {
         RecipeIngredient ri5= new RecipeIngredient(new Ingredient("pepper"), 50, Measurement.G);
         RecipeIngredient ri6= new RecipeIngredient(new Ingredient("milk"), 200, Measurement.ML);
         RecipeIngredient ri7= new RecipeIngredient(new Ingredient("oil"), 50, Measurement.TSP);
-        RecipeIngredient ri8= new RecipeIngredient(new Ingredient("pepper"), 50, Measurement.G);
+        RecipeIngredient ri8= new RecipeIngredient(new Ingredient("spenat"), 50, Measurement.G);
 
         return Arrays.asList(ri1,ri2,ri3,ri4,ri5,ri6,ri7,ri8);
 
@@ -99,7 +99,7 @@ class RecipeRepositoryTest {
     void findAllByRecipeIngredientsContainsIngredientName() {
         List<Recipe> found = recipeRepository.findAllByRecipeIngredientsContainsIngredientName("pepper");
         assertFalse(found.isEmpty());
-        assertEquals(found.size(),2);
+        assertEquals(found.size(),1);
     }
 
     @Test

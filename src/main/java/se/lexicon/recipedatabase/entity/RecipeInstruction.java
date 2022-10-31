@@ -9,13 +9,18 @@ public class RecipeInstruction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int instructionId;
     @Column(length = 1500)
-    private String Instructions;
+    private String instructions;
 
     public RecipeInstruction() {
     }
 
+    public RecipeInstruction(int instructionId, String instructions) {
+        this.instructionId = instructionId;
+        this.instructions = instructions;
+    }
+
     public RecipeInstruction(String instructions) {
-        Instructions = instructions;
+        instructions = instructions;
     }
 
     public int getInstructionId() {
@@ -27,11 +32,11 @@ public class RecipeInstruction {
     }
 
     public String getInstructions() {
-        return Instructions;
+        return instructions;
     }
 
     public void setInstructions(String instructions) {
-        Instructions = instructions;
+        instructions = instructions;
     }
 
     @Override
@@ -51,7 +56,7 @@ public class RecipeInstruction {
     public String toString() {
         return "RecipeInstruction{" +
                 "instructionId=" + instructionId +
-                ", Instructions='" + Instructions + '\'' +
+                ", Instructions='" + instructions + '\'' +
                 '}';
     }
 }

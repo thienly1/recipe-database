@@ -8,12 +8,13 @@ public class Recipe {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int recipeId;
+
     private  String recipeName;
     @OneToMany(mappedBy = "recipe", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.LAZY)
     private List<RecipeIngredient> recipeIngredients;
-    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.DETACH,CascadeType.REFRESH}, fetch = FetchType.EAGER)
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.EAGER)
     private RecipeInstruction instruction;
-    @ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE}, fetch = FetchType.LAZY)
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE}, fetch = FetchType.LAZY)
     @JoinTable(name = "recipe_recipe_category", joinColumns = @JoinColumn(name = "recipe_id"), inverseJoinColumns = @JoinColumn(name = "recipe_category_id"))
     private Set<RecipeCategory> categories;
 
@@ -30,6 +31,15 @@ public class Recipe {
         this.instruction = instruction;
         this.categories = categories;
     }
+
+    public Recipe(int recipeId, String recipeName, List<RecipeIngredient> recipeIngredients, RecipeInstruction instruction, Set<RecipeCategory> categories) {
+        this.recipeId = recipeId;
+        this.recipeName = recipeName;
+        this.recipeIngredients = recipeIngredients;
+        this.instruction = instruction;
+        this.categories = categories;
+    }
+
     public void addCategory(RecipeCategory category){
         if(categories==null) categories= new HashSet<>();
         categories.add(category);
@@ -113,8 +123,8 @@ public class Recipe {
         return "Recipe{" +
                 "recipeId=" + recipeId +
                 ", recipeName='" + recipeName + '\'' +
-                ", recipeIngredients=" + recipeIngredients +
-                ", instruction=" + instruction +
+//                ", recipeIngredients=" + recipeIngredients +
+//                ", instruction=" + instruction +
 //                ", categories=" + categories +
                 '}';
     }
